@@ -168,10 +168,10 @@
                     <Alias value="CYBSP_MIKROBUS_SPI_CS"/>
                 </Block>
                 <Block location="ioss[0].port[13].pin[5]">
-                    <Alias value="CYBSP_S2G1_SPI_CS"/>
+                    <Alias value="CYBSP_S2G2_SPI_CS"/>
                 </Block>
                 <Block location="ioss[0].port[13].pin[6]">
-                    <Alias value="CYBSP_S2G2_SPI_CS"/>
+                    <Alias value="CYBSP_S2G1_SPI_CS"/>
                 </Block>
                 <Block location="ioss[0].port[13].pin[7]">
                     <Alias value="CYBSP_A4"/>
@@ -1054,7 +1054,24 @@
                         <Param id="sourceClock" value="lfclk"/>
                     </Personality>
                 </Block>
+                <Block location="srss[0].clock[0].eco[0]">
+                    <Personality template="eco" version="3.0">
+                        <Param id="ecoFrequency" value="20.0000"/>
+                        <Param id="accuracyPpm" value="10"/>
+                        <Param id="driveLevel" value="100"/>
+                        <Param id="esr" value="50"/>
+                        <Param id="c0" value="7"/>
+                        <Param id="cLoad" value="8"/>
+                    </Personality>
+                </Block>
                 <Block location="srss[0].clock[0].fastclk[0]">
+                    <Personality template="fastclk" version="2.0">
+                        <Param id="divider" value="1"/>
+                        <Param id="intDivider" value="1"/>
+                        <Param id="fracDivider" value="0"/>
+                    </Personality>
+                </Block>
+                <Block location="srss[0].clock[0].fastclk[1]">
                     <Personality template="fastclk" version="2.0">
                         <Param id="divider" value="1"/>
                         <Param id="intDivider" value="1"/>
@@ -1064,7 +1081,7 @@
                 <Block location="srss[0].clock[0].fll[0]">
                     <Personality template="fll" version="4.0">
                         <Param id="configuration" value="auto"/>
-                        <Param id="desiredFrequency" value="50.000"/>
+                        <Param id="desiredFrequency" value="100.000"/>
                         <Param id="enableOutputDivider" value="false"/>
                     </Personality>
                 </Block>
@@ -1095,18 +1112,18 @@
                 <Block location="srss[0].clock[0].hfclk[4]">
                     <Personality template="hfclk" version="3.0">
                         <Param id="sourceClockNumber" value="4"/>
-                        <Param id="divider" value="1"/>
+                        <Param id="divider" value="4"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].hfclk[5]">
                     <Personality template="hfclk" version="3.0">
-                        <Param id="sourceClockNumber" value="5"/>
-                        <Param id="divider" value="1"/>
+                        <Param id="sourceClockNumber" value="2"/>
+                        <Param id="divider" value="2"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].hfclk[6]">
                     <Personality template="hfclk" version="3.0">
-                        <Param id="sourceClockNumber" value="5"/>
+                        <Param id="sourceClockNumber" value="4"/>
                         <Param id="divider" value="1"/>
                     </Personality>
                 </Block>
@@ -1136,34 +1153,39 @@
                         <Param id="sourceClock" value="ilo0"/>
                     </Personality>
                 </Block>
+                <Block location="srss[0].clock[0].memclk[0]">
+                    <Personality template="mxs40memclk" version="1.0">
+                        <Param id="divider" value="1"/>
+                    </Personality>
+                </Block>
                 <Block location="srss[0].clock[0].pathmux[0]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="eco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[1]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="eco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[2]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="eco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[3]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="eco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[4]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="eco"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[5]">
                     <Personality template="pathmux" version="3.0">
-                        <Param id="sourceClock" value="imo"/>
+                        <Param id="sourceClock" value="ilo0"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pathmux[6]">
@@ -1173,7 +1195,7 @@
                 </Block>
                 <Block location="srss[0].clock[0].periclk[0]">
                     <Personality template="periclk" version="2.0">
-                        <Param id="divider" value="2"/>
+                        <Param id="divider" value="1"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].pll400m[0]">
@@ -1202,6 +1224,11 @@
                         <Param id="configuration" value="auto"/>
                         <Param id="desiredFrequency" value="100.000"/>
                         <Param id="optimization" value="MinPower"/>
+                    </Personality>
+                </Block>
+                <Block location="srss[0].clock[0].slowclk[0]">
+                    <Personality template="slowclk" version="2.0">
+                        <Param id="divider" value="1"/>
                     </Personality>
                 </Block>
                 <Block location="srss[0].clock[0].timerclk[0]">
@@ -1245,6 +1272,14 @@
                 <Net>
                     <Port name="ioss[0].port[6].pin[0].analog[0]"/>
                     <Port name="pass[0].saradc[0].sar[0].vin[0]"/>
+                </Net>
+                <Net>
+                    <Port name="ioss[0].port[21].pin[2].analog[0]"/>
+                    <Port name="srss[0].clock[0].eco[0].eco_in[0]"/>
+                </Net>
+                <Net>
+                    <Port name="ioss[0].port[21].pin[3].analog[0]"/>
+                    <Port name="srss[0].clock[0].eco[0].eco_out[0]"/>
                 </Net>
                 <Net>
                     <Port name="pass[0].saradc[0].sar[0].clock_sar[0]"/>
